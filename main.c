@@ -2,11 +2,16 @@
 
 int main(void) {
 
+	char buffer[1024];
+
 	while(1) {
 
 		printf("[SENTRY-sh]$");
 		fflush(stdout);
-		break;
+		
+		if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+			break;
+		}
 	}
 
 return 0;
