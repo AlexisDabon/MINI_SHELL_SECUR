@@ -1,11 +1,9 @@
 #include <stdio.h>
 
 int main(void) {
-
 	char buffer[1024];
 
 	while(1) {
-
 		printf("[SENTRY-sh]$");
 		fflush(stdout);
 		
@@ -14,6 +12,5 @@ int main(void) {
 		}
 	}
 
-return 0;
-
+	return 0;
 }
