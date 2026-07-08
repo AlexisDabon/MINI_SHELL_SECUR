@@ -27,5 +27,20 @@ int main(void) {
 		}
 	}
 
+	pid_t pid;
+
+	pid = fork();
+
+		if (pid < 0) {
+			printf ("Erreur \n");
+		}
+		else if (pid == 0) {
+			printf ("Processus enfant \n");
+			return 0;
+		}
+		else {
+			printf ("Processus parent \n");
+		}
+
 	return 0;
 }
