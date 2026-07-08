@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <stdlib.h>
 
 int main(void) {
 	char buffer[1024];
@@ -34,11 +35,12 @@ int main(void) {
 			printf ("Erreur \n");
 		}
 		else if (pid == 0) {
-			printf ("Processus enfant \n");
-			return 0;
+			execlp (buffer, buffer, NULL);
+			fprintf(stderr, "SENTRY-h: %s commande introuvable \n", buffer);
+			exit(127);
 		}
 		else {
-			printf ("Processus parent \n");
+			wait(NULL);
 		}
 	}
 
