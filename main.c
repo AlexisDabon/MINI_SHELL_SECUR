@@ -25,7 +25,6 @@ int main(void) {
 			printf("Fermeture de session sécurisée \n");
 				break;
 		}
-	}
 
 	pid_t pid;
 
@@ -41,6 +40,7 @@ int main(void) {
 		else {
 			printf ("Processus parent \n");
 		}
+	}
 
 	return 0;
 }
