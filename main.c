@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 int main(void) {
 	char buffer[1024];
@@ -14,8 +17,8 @@ int main(void) {
 
 		size_t len = strlen(buffer);
 
-		if (len > 0 && buffer [len -1] == '\n') {
-	       		buffer [len - 1] = '\0';
+		if (len > 0 && buffer[len -1] == '\n') {
+	       		buffer[len - 1] = '\0';
 		}
 
 		if (strcmp(buffer, "exit") == 0) {
