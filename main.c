@@ -16,7 +16,12 @@ int main(void) {
 
 		if (len > 0 && buffer [len -1] == '\n') {
 	       		buffer [len - 1] = '\0';
-		}	
+		}
+
+		if (strcmp(buffer, "exit") == 0) {
+			printf("Fermeture de session sécurisée \n");
+				break;
+		}
 	}
 
 	return 0;
