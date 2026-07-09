@@ -4,12 +4,15 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <signal.h>
 
 int main(void) {
 	char buffer[1024];
 			
 	const char *whitelist[] = {"ls", "pwd", "clean", "date", "exit"};
 	int whitelist_size = sizeof(whitelist) / sizeof(whitelist[0]);
+	
+	signal(SIGINT, SIG_IGN);
 
 	while(1) {
 		printf("[SENTRY-sh]$");
