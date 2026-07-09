@@ -38,9 +38,20 @@ int main(void) {
 				}
 		}
 			if (!allowed) {
-				printf("ERREUR: la commande %s est refusé", buffer);
-				continue;
+				printf("ERREUR: la commande %s est refusée \n", buffer);
+
+			FILE *log_file = fopen("sentry.log", "a");
+
+			if (log_file != NULL) {
+				fprintf(log_file, "[ALERTE SECURITY] Tentative d'exécution de la commande : %s\n", buffer);
+				fclose(log_file);
+			} 
+			else {
+				printf("ERREUR SYSTÈME: Impossible d'écrire dans sentry.log\n");
 			}
+
+			continue;
+		}
 
 	pid_t pid;
 
