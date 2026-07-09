@@ -7,6 +7,9 @@
 
 int main(void) {
 	char buffer[1024];
+			
+	const char *whitelist[] = {"ls", "pwd", "clean", "date", "exit"};
+	int whitelist_size = sizeof(whitelist) / sizeof(whitelist[0]);
 
 	while(1) {
 		printf("[SENTRY-sh]$");
@@ -26,6 +29,18 @@ int main(void) {
 			printf("Fermeture de session sécurisée \n");
 				break;
 		}
+
+		int allowed = 0;
+		for (int i = 0; i < whitelist_size; i++) {
+			if (strcmp(buffer, whitelist[i]) == 0) {
+				allowed = 1;
+				break;
+				}
+		}
+			if (!allowed) {
+				printf("ERREUR: la commande %s est refusé", buffer);
+				continue;
+			}
 
 	pid_t pid;
 
